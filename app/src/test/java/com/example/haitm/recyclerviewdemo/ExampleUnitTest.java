@@ -1,17 +1,47 @@
 package com.example.haitm.recyclerviewdemo;
 
-import org.junit.Test;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+public class MainActivity extends AppCompatActivity {
+
+    RecyclerView mRecyclerView;
+    RecyclerViewAdapter mRcvAdapter;
+    List<String> data;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        data = new ArrayList<>();
+        data.add("Táo");
+        data.add("Củ Dền");
+        data.add("Ngò Rí");
+        data.add("Cà Chua");
+        data.add("Trái bơ");
+        data.add("Quả Lê");
+        data.add("Cà Tím");
+        data.add("Trái Nho");
+        data.add("Trái Xoài");
+        data.add("Trái Cam");
+        data.add("Hoa Hướng Dương");
+        data.add("Quả Dưa Hấu");
+        data.add("Hoa Dâm Bụt");
+        data.add("Hoa Lan Giả Hạc");
+        
+        mRcvAdapter = new RecyclerViewAdapter(data);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(mRcvAdapter);
+
     }
 }
